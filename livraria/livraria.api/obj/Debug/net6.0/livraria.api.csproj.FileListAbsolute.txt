@@ -25,3 +25,5 @@ C:\Users\eliez\OneDrive\Documentos\GitHub\livraria\livraria\livraria.api\obj\Deb
 C:\Users\eliez\OneDrive\Documentos\GitHub\livraria\livraria\livraria.api\obj\Debug\net6.0\ref\livraria.api.dll
 C:\Users\eliez\OneDrive\Documentos\GitHub\livraria\livraria\livraria.api\obj\Debug\net6.0\livraria.api.pdb
 C:\Users\eliez\OneDrive\Documentos\GitHub\livraria\livraria\livraria.api\obj\Debug\net6.0\livraria.api.genruntimeconfig.cache
+C:\Users\eliez\OneDrive\Documentos\GitHub\livraria\livraria\livraria.api\bin\Debug\net6.0\livraria.api.xml
+C:\Users\eliez\OneDrive\Documentos\GitHub\livraria\livraria\livraria.api\obj\Debug\net6.0\livraria.api.xml
