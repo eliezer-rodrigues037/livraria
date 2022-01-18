@@ -4,6 +4,5 @@
     {
         CapaDura = 1,
         CapaCartonada = 2
-
     }
 }

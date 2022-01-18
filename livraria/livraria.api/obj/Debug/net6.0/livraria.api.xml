@@ -4,5 +4,27 @@
         <name>livraria.api</name>
     </assembly>
     <members>
+        <member name="M:livraria.api.Controllers.LivrosController.CadastrarLivro(livraria.api.Models.LivroViewModelInput)">
+             <summary>
+             Cadastra um novo livro
+             </summary>
+              <remarks>
+             Amostra de requisição:
+            
+                 POST /cadastrar
+                 {
+                    "livroId": int,
+                    "titulo": "string",
+                    "autor": "string",
+                    "sinopse": "string",
+                    "tipoLivro": 1 ou 2,
+                    "codigoISBN": "string",
+                    "valor": 0
+                 }
+            
+             </remarks>
+             <response code="201">Returns the newly created item</response>
+             <response code="400">If the item is null</response>
+        </member>
     </members>
 </doc>

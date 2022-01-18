@@ -5,7 +5,17 @@
       "ProjectGuid": "aafaaeeb-8e75-49fa-a493-8434dc379f31",
       "DisplayName": "livraria.api",
       "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Arquivos Diversos",
+      "ColorIndex": -1
+    },
+    "16f972d9-4d90-4e07-b5b6-b9e13313b7ba": {
+      "ProjectGuid": "16f972d9-4d90-4e07-b5b6-b9e13313b7ba",
+      "DisplayName": "Solution Items",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
