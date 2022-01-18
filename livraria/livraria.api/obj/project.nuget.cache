@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "KAL/oVpf7+zQT6Zh6OzEHd0j4MKRTltwO46/5C97zFO63iokZDvlhUeDnS8FhdslEpmHCBI7ifwGyoEtsqPyig==",
+  "dgSpecHash": "wFDxqe3YPLY6SSy60pryMaZn4ttTilWUF4YYKOMSJuuJrMS7cdfI/2GGdSCoC9cYV6RjNPIFvswR6MBKCdVzsg==",
   "success": true,
   "projectFilePath": "C:\\Users\\eliez\\OneDrive\\Documentos\\GitHub\\livraria\\livraria\\livraria.api\\livraria.api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\eliez\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\eliez\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\eliez\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\eliez\\.nuget\\packages\\swashbuckle.aspnetcore.annotations\\6.2.3\\swashbuckle.aspnetcore.annotations.6.2.3.nupkg.sha512",
     "C:\\Users\\eliez\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\eliez\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
     "C:\\Users\\eliez\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"

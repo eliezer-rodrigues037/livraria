@@ -4,9 +4,9 @@ namespace livraria.api.Models
 {
     public class LivroViewModelInput
     {
-        [Required]
+        [Required(ErrorMessage ="Id é obrigatório")]
         public int LivroId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Titulo Obrigatório")]
         public string? Titulo { get; set; }
         public string? Autor { get; set; }
         public string? Sinopse { get; set; }

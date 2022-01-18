@@ -1,4 +1,5 @@
-﻿using livraria.api.Models;
+﻿using livraria.api.Filters;
+using livraria.api.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,13 +31,18 @@ namespace livraria.api.Controllers
         /// </remarks>
         /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response>
+        /// <response code="500"> Internal Server error</response>
 
 
         [HttpPost]
         [Route("cadastrar")]
-
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [CustomModelStateValidation]
         public IActionResult CadastrarLivro(LivroViewModelInput livroViewModelInput)
         {
+            
             return Created("", livroViewModelInput);
         }
     }
