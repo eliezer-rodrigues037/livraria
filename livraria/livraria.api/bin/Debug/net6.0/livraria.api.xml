@@ -4,27 +4,50 @@
         <name>livraria.api</name>
     </assembly>
     <members>
-        <member name="M:livraria.api.Controllers.LivrosController.CadastrarLivro(livraria.api.Models.LivroViewModelInput)">
-             <summary>
-             Cadastra um novo livro
-             </summary>
-              <remarks>
-             Amostra de requisição:
+        <member name="M:livraria.api.Controllers.LivrosController.GetLivro">
+            <summary>
+                Retorna todos os livros cadastrados
+            </summary>
+            <remarks>
+                GET: api/v2/livro/get
+            </remarks>
+        </member>
+        <member name="M:livraria.api.Controllers.LivrosController.GetLivroById(System.Int64)">
+            <summary>
+                Retorna um livro de id específico
+            </summary>
+            <remarks>
+                GET: api/v2/livro/getby/{id}
+            </remarks> 
+            <response code="400"> Se não encontrar nenhum Id correspondente </response>
+        </member>
+        <member name="M:livraria.api.Controllers.LivrosController.PutLivro(System.Int64,livraria.api.Buisness.Entities.Livro)">
+            <summary>
+                Edita um livro específico passando o Id
+            </summary>
+            <remarks>
+                PUT: api/v2/livro/editar/{id}
+            </remarks>
+            <response code="204"> Solicitação Bem sucedida error</response>
+            <response code="400"> Se não encontrar nenhum Id correspondente </response>
+        </member>
+        <member name="M:livraria.api.Controllers.LivrosController.PostLivro(livraria.api.Buisness.Entities.Livro)">
+            <summary>
+                Cadastra um novo livro
+            </summary>
+            <remarks>
+                POST: api/v2/livro/edit/{id}
+            </remarks>
             
-                 POST /cadastrar
-                 {
-                    "livroId": int,
-                    "titulo": "string",
-                    "autor": "string",
-                    "sinopse": "string",
-                    "tipoLivro": 1 ou 2,
-                    "codigoISBN": "string",
-                    "valor": 0
-                 }
+        </member>
+        <member name="M:livraria.api.Controllers.LivrosController.DeleteLivro(System.Int64)">
+            <summary>
+                Remove um livro específico passando o Id
+            </summary>
+            <remarks>
+                DELETE: api/v2/livro/excluir/{id}
+            </remarks>
             
-             </remarks>
-             <response code="201">Returns the newly created item</response>
-             <response code="400">If the item is null</response>
         </member>
     </members>
 </doc>
