@@ -1,49 +1,149 @@
-﻿using livraria.api.Filters;
-using livraria.api.Models;
-using Microsoft.AspNetCore.Http;
+﻿#nullable disable
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using livraria.api.Buisness.Entities;
+using livraria.api.Infrastructure.Data;
+using livraria.api.Filters;
 
 namespace livraria.api.Controllers
 {
-    
+    [Route("api/v2/livro")]
     [ApiController]
-    [Route("api/v1/livros")]
-    [Produces("application/json")]
     public class LivrosController : ControllerBase
     {
+        
+        private readonly LivroDbContext _context;
+
+        public LivrosController(LivroDbContext context)
+        {
+            _context = context;
+        }
+
         /// <summary>
-        /// Cadastra um novo livro
+        ///     Retorna todos os livros cadastrados
         /// </summary>
-        ///  <remarks>
-        /// Amostra de requisição:
-        ///
-        ///     POST /cadastrar
-        ///     {
-        ///        "livroId": int,
-        ///        "titulo": "string",
-        ///        "autor": "string",
-        ///        "sinopse": "string",
-        ///        "tipoLivro": 1 ou 2,
-        ///        "codigoISBN": "string",
-        ///        "valor": 0
-        ///     }
-        ///
+        /// <remarks>
+        ///     GET: api/v2/livro/get
         /// </remarks>
-        /// <response code="201">Returns the newly created item</response>
-        /// <response code="400">If the item is null</response>
-        /// <response code="500"> Internal Server error</response>
+        
+        [HttpGet]
+        [Route("get")]
+        public async Task<ActionResult<IEnumerable<Livro>>> GetLivro()
+        {
+            return await _context.Livro.ToListAsync();
+        }
 
 
+        /// <summary>
+        ///     Retorna um livro de id específico
+        /// </summary>
+        /// <remarks>
+        ///     GET: api/v2/livro/getby/{id}
+        /// </remarks> 
+        /// <response code="400"> Se não encontrar nenhum Id correspondente </response>
+        [HttpGet]
+        [Route("getBy/{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Livro>> GetLivroById(long id)
+        {
+            var livro = await _context.Livro.FindAsync(id);
+
+            if (livro == null)
+            {
+                return NotFound();
+            }
+
+            return livro;
+        }
+
+
+
+        /// <summary>
+        ///     Edita um livro específico passando o Id
+        /// </summary>
+        /// <remarks>
+        ///     PUT: api/v2/livro/editar/{id}
+        /// </remarks>
+        /// <response code="204"> Solicitação Bem sucedida error</response>
+        /// <response code="400"> Se não encontrar nenhum Id correspondente </response>
+        [HttpPut]
+        [Route("editar/{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> PutLivro(long id, Livro livro)
+        {
+            if (id != livro.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(livro).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!LivroExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        /// <summary>
+        ///     Cadastra um novo livro
+        /// </summary>
+        /// <remarks>
+        ///     POST: api/v2/livro/edit/{id}
+        /// </remarks>
+        /// 
         [HttpPost]
-        [Route("cadastrar")]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Route("incluir")]
         [CustomModelStateValidation]
-        public IActionResult CadastrarLivro(LivroViewModelInput livroViewModelInput)
+        public async Task<ActionResult<Livro>> PostLivro(Livro livro)
         {
             
-            return Created("", livroViewModelInput);
+            _context.Livro.Add(livro);
+            await _context.SaveChangesAsync();
+            
+            return CreatedAtAction(nameof(GetLivroById), new { id = livro.Id }, livro);
+        }
+
+        // DELETE: api/LivroesDB/5
+        /// <summary>
+        ///     Remove um livro específico passando o Id
+        /// </summary>
+        /// <remarks>
+        ///     DELETE: api/v2/livro/excluir/{id}
+        /// </remarks>
+        /// 
+        [HttpDelete]
+        [Route("excluir/{id}")]
+        public async Task<IActionResult> DeleteLivro(long id)
+        {
+            var livro = await _context.Livro.FindAsync(id);
+            if (livro == null)
+            {
+                return NotFound();
+            }
+
+            _context.Livro.Remove(livro);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool LivroExists(long id)
+        {
+            return _context.Livro.Any(e => e.Id == id);
         }
     }
 }
