@@ -20,6 +20,25 @@ namespace livraria.api.Controllers
         }
 
         /// <summary>
+        ///     Cadastra um novo livro
+        /// </summary>
+        /// <remarks>
+        ///     POST: api/v2/livro/incluir
+        /// </remarks>
+        /// 
+        [HttpPost]
+        [Route("incluir")]
+        [CustomModelStateValidation]
+        public async Task<ActionResult<Livro>> PostLivro(Livro livro)
+        {
+            
+            _context.Livro.Add(livro);
+            await _context.SaveChangesAsync();
+            
+            return CreatedAtAction(nameof(GetLivroById), new { id = livro.Id }, livro);
+        }
+
+        /// <summary>
         ///     Retorna todos os livros cadastrados
         /// </summary>
         /// <remarks>
@@ -64,7 +83,7 @@ namespace livraria.api.Controllers
         /// <remarks>
         ///     PUT: api/v2/livro/editar/{id}
         /// </remarks>
-        /// <response code="204"> Solicitação Bem sucedida error</response>
+        /// <response code="204"> Solicitação Bem sucedida</response>
         /// <response code="400"> Se não encontrar nenhum Id correspondente </response>
         [HttpPut]
         [Route("editar/{id}")]
@@ -98,24 +117,6 @@ namespace livraria.api.Controllers
             return NoContent();
         }
 
-        /// <summary>
-        ///     Cadastra um novo livro
-        /// </summary>
-        /// <remarks>
-        ///     POST: api/v2/livro/edit/{id}
-        /// </remarks>
-        /// 
-        [HttpPost]
-        [Route("incluir")]
-        [CustomModelStateValidation]
-        public async Task<ActionResult<Livro>> PostLivro(Livro livro)
-        {
-            
-            _context.Livro.Add(livro);
-            await _context.SaveChangesAsync();
-            
-            return CreatedAtAction(nameof(GetLivroById), new { id = livro.Id }, livro);
-        }
 
         // DELETE: api/LivroesDB/5
         /// <summary>

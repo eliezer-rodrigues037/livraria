@@ -28,7 +28,7 @@
             <remarks>
                 PUT: api/v2/livro/editar/{id}
             </remarks>
-            <response code="204"> Solicitação Bem sucedida error</response>
+            <response code="204"> Solicitação Bem sucedida</response>
             <response code="400"> Se não encontrar nenhum Id correspondente </response>
         </member>
         <member name="M:livraria.api.Controllers.LivrosController.PostLivro(livraria.api.Buisness.Entities.Livro)">
