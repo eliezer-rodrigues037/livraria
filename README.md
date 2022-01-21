@@ -1,7 +1,7 @@
 # livraria API
 
-##Esta aplicação é uma API feita para o consumo do front end de uma livraria.
-##Foi construida utilziando o framework Dotnet 6.0, Entity Framework core utilziando um banco de dados em memória.
+## Esta aplicação é uma API feita para o consumo do front end de uma livraria.
+## Foi construida utilziando o framework Dotnet 6.0, Entity Framework core utilziando um banco de dados em memória.
 
 Para utilizala, é necessário a instalação do Dotnet SDK 6.0 atravez do [Link](https://dotnet.microsoft.com/en-us/download).<br>
 Após a instalação do SKD, faça o download do repositório, e extraia aonde desejar.<br>
